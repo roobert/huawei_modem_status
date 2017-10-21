@@ -11,6 +11,14 @@ class Modem
     self.class.base_uri(base_uri)
   end
 
+  def to_s
+    [
+      connection_type,
+      connection_status,
+      signal_level,
+    ].join(" - ")
+  end
+
   def signal_level
     status["SignalIcon"]
   end
@@ -142,8 +150,4 @@ class Modem
   end
 end
 
-m = Modem.new("192.168.8.1")
-
-puts m.signal_level
-puts m.connection_type
-puts m.connection_status
+puts Modem.new("192.168.8.1")
